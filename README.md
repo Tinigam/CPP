@@ -126,7 +126,7 @@ public:
 
 来源：力扣（LeetCode）
 链接：https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii
-https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0122.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAII.md
+链接：https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0122.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAII.md
 
 #### 解题思路
 如果某天的价格会低很则在前一天必会售出即是最优解，所以如果把前一天买的股票卖出去能赚钱的话则卖掉，把卖掉的钱加起来就是最大总利润
@@ -148,6 +148,46 @@ public:
 };
 ```
 
+### 跳跃游戏
+
+给定一个非负整数数组 nums ，你最初位于数组的 第一个下标 。
+
+数组中的每个元素代表你在该位置可以跳跃的最大长度。
+
+判断你是否能够到达最后一个下标。
+
+来源：力扣（LeetCode）
+链接：https://leetcode.cn/problems/jump-game/
+链接：https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0055.%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F.md
+
+### 解题思路
+在目前已知的范围内找到可以达到最大范围的点，即每个点可以到达的距离nums[i]加上那个点距离起始点的距离i，当可以达到的最大范围大于或等于数组的长度时就说明可以达到最后一个下标。
+
+~~但是我竟然用了两个循环！！！因为完全不知道怎么写！！！耻辱啊耻辱啊！！！~~
+
+### 代码
+
+```cpp
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        int max = 0;
+        int step = 0;
+        for (int i = 0; i <= step; i++) {
+            for (int j = 0; j < nums[i]; j++) {
+                if (i + nums[i] > max) {
+                    max = i + nums[i];
+                }
+            }
+            step = max;
+            if (step >= nums.size() - 1){
+                return true;
+            }
+        }
+        return false;
+    }
+};
+```
 
 ## Function Example:
 
