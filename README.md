@@ -89,7 +89,7 @@ public:
 
 #### 解题思路
 把从一开始的每一项加起来，
-如果当前的和小于目前最大的和，则从零重新数
+如果当前的和为负数的时候，则从零重新数
 
 *初始当前最大值需要小于可能出现的最小值
 
@@ -160,12 +160,36 @@ public:
 链接：https://leetcode.cn/problems/jump-game/
 链接：https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0055.%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F.md
 
-### 解题思路
+#### 解题思路
 在目前已知的范围内找到可以达到最大范围的点，即每个点可以到达的距离nums[i]加上那个点距离起始点的距离i，当可以达到的最大范围大于或等于数组的长度时就说明可以达到最后一个下标。
 
 ~~但是我竟然用了两个循环！！！因为完全不知道怎么写！！！耻辱啊耻辱啊！！！~~
 
-### 代码
+#### 代码
+
+```cpp
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        int max = 0;
+        int step = 0;
+        for (int i = 0; i <= step; i++) {
+            for (int j = 0; j < nums[i]; j++) {
+                if (i + nums[i] > max) {
+                    max = i + nums[i];
+                }
+            }
+            step = max;
+            if (step >= nums.size() - 1){
+                return true;
+            }
+        }
+        return false;
+    }
+};
+```
+
+#### 我老婆给我提供了一种全新的解,要比我自己的快很多
 
 ```cpp
 class Solution {
